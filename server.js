@@ -5,7 +5,6 @@ var express = require('express')
     ,news = require('jade').compileFile(__dirname + '/source/templates/news.jade')
     ,contact = require('jade').compileFile(__dirname + '/source/templates/contact.jade')
     ,about = require('jade').compileFile(__dirname + '/source/templates/about.jade')
-    ,win_vs_mac = require('jade').compileFile(__dirname + '/source/templates/win_vs_mac.jade')
 
 app.use(logger('dev'))
 app.use(express.static(__dirname + '/static'))
