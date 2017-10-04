@@ -1,50 +1,73 @@
 var express = require('express')
-  , logger = require('morgan')
-  , app = express()
-  , home = require('jade').compileFile(__dirname + '/source/templates/homepage.jade')
-    ,news = require('jade').compileFile(__dirname + '/source/templates/news.jade')
-    ,contact = require('jade').compileFile(__dirname + '/source/templates/contact.jade')
-    ,about = require('jade').compileFile(__dirname + '/source/templates/about.jade')
+    , logger = require('morgan')
+    , favicon = require('serve-favicon')
+    , path = require('path')
+    , app = express()
+    , home = require('jade').compileFile(__dirname + '/source/templates/homepage.jade')
+    , news = require('jade').compileFile(__dirname + '/source/templates/news.jade')
+    , contact = require('jade').compileFile(__dirname + '/source/templates/contact.jade')
+    , about = require('jade').compileFile(__dirname + '/source/templates/about.jade')
+    , blog = require('jade').compileFile(__dirname + '/source/templates/blog.jade')
+    , reviews = require('jade').compileFile(__dirname + '/source/templates/reviews.jade');
 
-app.use(logger('dev'))
-app.use(express.static(__dirname + '/static'))
+app.use(logger('dev'));
+app.use(express.static(__dirname + '/static'));
+app.use(favicon(path.join(__dirname, 'static','images', 'favicon.ico')));
 
 app.get('/', function (req, res, next) {
-  try {
-    var html = home({ title: 'Home' })
-    res.send(html)
-  } catch (e) {
-    next(e)
-  }
-})
+    try {
+        var html = home({ title: 'Home' });
+        res.send(html)
+    } catch (e) {
+        next(e)
+    }
+});
 
 app.get('/news', function (req, res, next) {
     try {
-        var html = news({ title: 'News' })
+        var html = news({ title: 'News' });
         res.send(html)
     } catch (e) {
         next(e)
     }
-})
+});
 
 app.get('/contact', function (req, res, next) {
     try {
-        var html = contact({ title: 'Contact' })
+        var html = contact({ title: 'Contact' });
         res.send(html)
     } catch (e) {
         next(e)
     }
-})
+});
 
 app.get('/about', function (req, res, next) {
     try {
-        var html = about({ title: 'About me' })
+        var html = about({ title: 'About me' });
         res.send(html)
     } catch (e) {
         next(e)
     }
-})
+});
+
+app.get('/blog', function (req, res, next) {
+    try {
+        var html = about({ title: 'Blog' });
+        res.send(html)
+    } catch (e) {
+        next(e)
+    }
+});
+
+app.get('/reviews', function (req, res, next) {
+    try {
+        var html = about({ title: 'Reviews' });
+        res.send(html)
+    } catch (e) {
+        next(e)
+    }
+});
 
 app.listen(process.env.PORT || 3000, function () {
-  console.log('Listening on http://localhost:' + (process.env.PORT || 3000))
-})
+    console.log('Listening on http://localhost:' + (process.env.PORT || 3000))
+});
