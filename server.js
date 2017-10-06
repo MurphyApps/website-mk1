@@ -3,11 +3,11 @@ var express = require('express')
     , favicon = require('serve-favicon')
     , path = require('path')
     , app = express()
-    , home = require('jade').compileFile(__dirname + '/source/templates/homepage.jade')
+    , home = require('jade').compileFile(__dirname + '/source/templates/homepage_v2.jade')
     , news = require('jade').compileFile(__dirname + '/source/templates/news.jade')
     , contact = require('jade').compileFile(__dirname + '/source/templates/contact.jade')
     , about = require('jade').compileFile(__dirname + '/source/templates/about.jade')
-    , blog = require('jade').compileFile(__dirname + '/source/templates/blog.jade')
+    , blog = require('jade').compileFile(__dirname + '/source/templates/blog_v2.jade')
     , reviews = require('jade').compileFile(__dirname + '/source/templates/reviews.jade');
 
 app.use(logger('dev'));
@@ -52,7 +52,7 @@ app.get('/about', function (req, res, next) {
 
 app.get('/blog', function (req, res, next) {
     try {
-        var html = about({ title: 'Blog' });
+        var html = blog({ title: 'Blog' });
         res.send(html)
     } catch (e) {
         next(e)
@@ -61,7 +61,7 @@ app.get('/blog', function (req, res, next) {
 
 app.get('/reviews', function (req, res, next) {
     try {
-        var html = about({ title: 'Reviews' });
+        var html = reviews({ title: 'Reviews' });
         res.send(html)
     } catch (e) {
         next(e)

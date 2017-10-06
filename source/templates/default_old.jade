@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/css/index.css')
+    title Murph's Page
+
+  body
+    .header
+      h1.page-title Tutorial
+
+    ul.nav
+      li: a(href='/') Home
+      li: a(href='/news') New
+      li: a(href='/blog') Blog
+      li: a(href='/reviews') Reviews
+      li: a(href='/contact') Contact
+      li: a(href='/about') About
+
+    .main-content
+      block content
+
+    .footer
+      p Murphy
